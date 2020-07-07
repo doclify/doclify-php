@@ -1,0 +1,22 @@
+{
+    "name": "doclify/php",
+    "description": "SDK for the Doclify API",
+    "type": "library",
+    "keywords": ["doclify", "php", "client", "sdk"],
+    "license": "MIT",
+    "require": {
+        "guzzlehttp/guzzle": "^6.5",
+        "guzzlehttp/psr7": "^1.6",
+        "psr/http-message": "^1.0"
+    },
+    "authors": [
+        {
+            "name": "Andrej Adamcik"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Doclify\\": "src"
+        }
+    }
+}

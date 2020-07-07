@@ -1,0 +1,5 @@
+/vendor/
+/tests/cache/*
+.git
+
+idea.md
