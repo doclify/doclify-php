@@ -17,7 +17,7 @@ class Documents
   /**
    * @var string
    */
-  private $lang;
+  private $langQuery;
 
   /**
    * @var array
@@ -155,6 +155,13 @@ class Documents
     return $this;
   }
 
+  public function lang (string $lang): self
+  {
+    $this->langQuery = $lang;
+
+    return $this;
+  }
+
   private function getQuery(array $query = []): array
   {
     $defaults = [
@@ -173,8 +180,8 @@ class Documents
       $defaults['order'] = json_encode($this->orderQuery);
     }
 
-    if ($this->lang) {
-      $defaults['lang'] = $this->lang;
+    if ($this->langQuery) {
+      $defaults['lang'] = $this->langQuery;
     }
 
     return array_merge($defaults, $query);
