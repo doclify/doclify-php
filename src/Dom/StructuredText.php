@@ -62,6 +62,7 @@ class StructuredText
 
         foreach ($item->attrs as $attr => $value) {
           if ($value) {
+            $value = \is_array($value) ? \join(',', $value) : $value;
             $attrs[] = "$attr=\"$value\"";
           }
         }
