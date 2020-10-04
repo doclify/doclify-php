@@ -33,6 +33,11 @@ class Client
     private $token;
 
     /**
+     * @var string
+     */
+    private $lang;
+
+    /**
      * @var HttpClient
      */
     private $httpClient;
@@ -62,6 +67,7 @@ class Client
 
         $this->repository = $options['repository'];
         $this->token = $options['token'];
+        $this->lang = $options['lang'];
 
         $this->httpClient = new HttpClient();
     }
@@ -74,6 +80,14 @@ class Client
     {
         $this->cache = $cache;
         $this->cacheConfig = $config;
+    }
+
+    public function getLang() {
+        return $this->lang;
+    }
+
+    public function setLang(string $lang) {
+        $this->lang = $lang;
     }
 
     /**

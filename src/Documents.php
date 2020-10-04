@@ -20,6 +20,11 @@ class Documents
   private $langQuery;
 
   /**
+   * @var boolean
+   */
+  private $fallbackQuery;
+
+  /**
    * @var array
    */
   private $q = [];
@@ -42,6 +47,12 @@ class Documents
   public function __construct(Client $client)
   {
     $this->client = $client;
+
+    $lang = $client->getLang();
+
+    if ($lang) {
+      $this->langQuery = $lang;
+    }
   }
 
   public function where (string $field, $operator, $value = null): self
@@ -162,6 +173,13 @@ class Documents
     return $this;
   }
 
+  public function fallback (bool $value): self
+  {
+    $this->fallbackQuery = $value;
+
+    return $this;
+  }
+
   private function getQuery(array $query = []): array
   {
     $defaults = [
@@ -182,6 +200,10 @@ class Documents
 
     if ($this->langQuery) {
       $defaults['lang'] = $this->langQuery;
+    }
+
+    if (is_bool($this->fallbackQuery)) {
+      $defaults['fallback'] = $this->fallbackQuery ? 1 : 0;
     }
 
     return array_merge($defaults, $query);
