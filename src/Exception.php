@@ -43,8 +43,8 @@ class Exception extends \RuntimeException {
     $message = $previous->getMessage();
 
     if ($this->data) {
-      if (isset($this->data['error']) && isset($this->data['error']['message'])) {
-        $message = $this->data['error']['message'];
+      if (isset($this->data->error) && isset($this->data->error->message)) {
+        $message = $this->data->error->message;
       } else {
         $message = 'Invalid request parameters.';
       }
